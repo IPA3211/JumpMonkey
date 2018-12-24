@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{F93A4D0D-AD9B-02CF-17FF-C8DC76D8F950}|">
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/SwipeManager.cs">
+    <Files>
+      <File FileName="Assets/ScreenSet.cs" Line="14" Column="3" />
+      <File FileName="Assets/PlayerControler.cs" Line="176" Column="9" />
+      <File FileName="Assets/SwipeManager.cs" Line="28" Column="5" />
+      <File FileName="Assets/SwipeReceiver.cs" Line="30" Column="33" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>
