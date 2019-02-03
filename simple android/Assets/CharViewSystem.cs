@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharViewSystem : MonoBehaviour {
 
@@ -21,11 +22,7 @@ public class CharViewSystem : MonoBehaviour {
     
     
     private float sumOfMove;
-
-    class CharactorMesh {
-        Mesh mesh;
-        Material Material;
-    }
+    
 
 	// Use this for initialization
 	void Start () {
@@ -101,9 +98,11 @@ public class CharViewSystem : MonoBehaviour {
 
     void MovePosition(float moveAmount) {
         viewObjects.transform.position += new Vector3(moveAmount, 0);
-
         sumOfMove += moveAmount;
+    }
 
+    public void ReturnHome() {
+            SceneManager.LoadScene("MainScene");
     }
 
     public void SetFocus(int objIndex)
@@ -122,6 +121,16 @@ public class CharViewSystem : MonoBehaviour {
         mainObj.GetComponent<MeshRenderer>().material = focusedObj.GetComponent<MeshRenderer>().material;
 
         StartCoroutine(MoveviewObjects(viewObjects.transform.position + new Vector3(-objIndex - viewObjects.transform.position.x, 0)));
+    }
+
+    public void SetCharactorInfo() {
+        try
+        {
+            GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>().indexCharactor = focus;
+        }
+        catch {
+            Debug.Log("SetCharactorInfo failed");
+        }
     }
 
     IEnumerator CharScaleSet(bool beBigger, GameObject obj) {

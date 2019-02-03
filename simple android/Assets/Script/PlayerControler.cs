@@ -37,6 +37,15 @@ public class PlayerControler : SwipeReceiver
 
     // Use this for initialization
     void Start() {
+        try
+        {
+            GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>().SetCharactor(gameObject);
+        }
+        catch
+        {
+            Debug.Log("SetCharactorInfo failed");
+        }
+
         Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
         rigidbody = gameObject.GetComponent<Rigidbody>();
         soundManager = system.GetComponent<SoundManager>();
