@@ -15,6 +15,7 @@ public class CharViewSystem : MonoBehaviour {
     public GameObject focusedObj = null;
 
     private GameObject hitObj;
+    private DataSystem data;
     private float camera2rect;
     private bool isCamera2;
 
@@ -25,9 +26,18 @@ public class CharViewSystem : MonoBehaviour {
     
 
 	// Use this for initialization
-	void Start () {
-        camera2rect = Screen.height * 0.16f;
+    void Start () {
+
+        data = GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>();
         viewObjtrans = viewObjects.GetComponentsInChildren<Transform>();
+
+        camera2rect = Screen.height * 0.16f;
+
+        for (int i = 0; i < data.charactors.Length; i++){
+            if(data.charactors[i].isGained == false){
+                viewObjects.transform.GetChild(i).GetComponent<MeshRenderer>().material.color = Color.black;
+            }
+        }
         SetFocus(focus);
     }
 	
@@ -124,12 +134,16 @@ public class CharViewSystem : MonoBehaviour {
     }
 
     public void SetCharactorInfo() {
-        try
+        if (data.charactors[focus].isGained)
         {
-            GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>().indexCharactor = focus;
-        }
-        catch {
-            Debug.Log("SetCharactorInfo failed");
+            try
+            {
+                GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>().indexCharactor = focus;
+            }
+            catch
+            {
+                Debug.Log("SetCharactorInfo failed");
+            }
         }
     }
 

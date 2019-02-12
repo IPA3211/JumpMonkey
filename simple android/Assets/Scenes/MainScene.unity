@@ -6027,9 +6027,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charactors:
-  - charactorMesh: {fileID: 4300000, guid: 06671e5bd5ca23e4dad4f8ad6697139c, type: 3}
+  - isGained: 1
+    charactorMesh: {fileID: 4300000, guid: 06671e5bd5ca23e4dad4f8ad6697139c, type: 3}
     charactorMat: {fileID: 2100000, guid: f402833a6a0406247807df5ff126dc37, type: 2}
-  - charactorMesh: {fileID: 4300000, guid: 6e0cb7b1a1854fc45a63af9e984ec562, type: 3}
+  - isGained: 0
+    charactorMesh: {fileID: 4300000, guid: 6e0cb7b1a1854fc45a63af9e984ec562, type: 3}
     charactorMat: {fileID: 2100000, guid: c251bc2a609050149ae62510472091a5, type: 2}
   indexCharactor: 0
 --- !u!4 &892822609

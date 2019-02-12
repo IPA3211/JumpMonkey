@@ -7,6 +7,7 @@ public class DataSystem : MonoBehaviour{
     [System.Serializable]
     public class CharactorSystem
     {
+        public bool isGained = false;
         public Mesh charactorMesh;
         public Material charactorMat;
     }
