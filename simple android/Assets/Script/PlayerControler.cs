@@ -228,7 +228,7 @@ public class PlayerControler : SwipeReceiver
         GameObject obj = Instantiate(getMoneyEffect, other.transform.position + new Vector3(0, 1, 0), other.transform.rotation);
 
         Destroy(obj, 1);
-        Destroy(other.gameObject);
+        other.gameObject.SetActive(false);
 
         system.GetComponent<MoneySpawn>().SpawnMoney();
     }

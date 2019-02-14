@@ -1,9 +1,15 @@
 ﻿<Properties StartupConfiguration="{F93A4D0D-AD9B-02CF-17FF-C8DC76D8F950}|">
   <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="Unity.Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/CharViewSystem.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Script/playerSetting.cs">
     <Files>
       <File FileName="Assets/DataSystem.cs" Line="20" Column="25" />
       <File FileName="Assets/CharViewSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/GameSystem.cs" Line="1" Column="1" />
+      <File FileName="Assets/Script/MoneySpawn.cs" Line="19" Column="2" />
+      <File FileName="Assets/Script/PlayerControler.cs" Line="231" Column="43" />
+      <File FileName="Assets/Script/CloudSpawn.cs" Line="26" Column="44" />
+      <File FileName="Assets/Script/CloudMove.cs" Line="16" Column="53" />
+      <File FileName="Assets/Script/playerSetting.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

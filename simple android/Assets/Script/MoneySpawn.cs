@@ -13,6 +13,7 @@ public class MoneySpawn : MonoBehaviour {
 
     IEnumerator IESpawnM() {
         yield return new WaitForSeconds(spawnDelay);
-        Instantiate(money, new Vector3(Random.Range(-8.35f, 8.35f), Random.Range(-16.5f, 16.5f), 32.4f), Quaternion.identity);
+        money.transform.position = new Vector3(Random.Range(-8.35f, 8.35f), Random.Range(-16.5f, 16.5f), 32.4f);
+        money.SetActive(true);
     }
 }
