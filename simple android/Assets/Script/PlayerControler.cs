@@ -45,8 +45,7 @@ public class PlayerControler : SwipeReceiver
         {
             Debug.Log("SetCharactorInfo failed");
         }
-
-        Screen.SetResolution(Screen.width, (Screen.width * 16) / 9, true);
+        
         rigidbody = gameObject.GetComponent<Rigidbody>();
         soundManager = system.GetComponent<SoundManager>();
         gameSystem = system.GetComponent<GameSystem>();
@@ -87,6 +86,7 @@ public class PlayerControler : SwipeReceiver
         }
     }
 
+    public float getLifeTime() { return lifeTimeCurrent; }
     private void InputCheck() {
         if ((Input.GetMouseButton(0) || Input.GetKey("space")) && isCanJump)
         {
@@ -216,21 +216,46 @@ public class PlayerControler : SwipeReceiver
 
     public void OnEnemyHit() {
         soundManager.PlayOneShot(SoundManager.Sound.Dead);
+        if (DataSystem.highestScore > gameSystem.getScore()) {
+            DataSystem.highestScore = gameSystem.getScore();
+        }
+        try
+        {
+            GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>().SaveInfo();
+        } catch {
+            Debug.Log("GameScene : Save failed");
+        }
         gameSystem.SetActiveDeadMenu(true);
         Destroy(gameObject);
     }
 
     public void OnMoneyHit(Collider other) {
-        lifeTimeCurrent = lifeTime;
-        soundManager.PlayOneShot(SoundManager.Sound.getMoney);
-        gameSystem.AddScore(100);
+        if (other.name.Equals("banana"))
+        {
+            lifeTimeCurrent = lifeTime;
+            soundManager.PlayOneShot(SoundManager.Sound.getMoney);
+            gameSystem.AddScore(100);
 
-        GameObject obj = Instantiate(getMoneyEffect, other.transform.position + new Vector3(0, 1, 0), other.transform.rotation);
+            GameObject obj = Instantiate(getMoneyEffect, other.transform.position + new Vector3(0, 1, 0), other.transform.rotation);
 
-        Destroy(obj, 1);
-        other.gameObject.SetActive(false);
+            Destroy(obj, 1);
+            other.gameObject.SetActive(false);
 
-        system.GetComponent<MoneySpawn>().SpawnMoney();
+            system.GetComponent<MoneySpawn>().SpawnBanana();
+        }
+
+        if (other.name.Equals("money")) {
+            soundManager.PlayOneShot(SoundManager.Sound.getMoney);
+
+            DataSystem.gainedMoney++;
+            GameObject.Find("DontDestoryOnLoad").GetComponent<DataSystem>().SaveInfo();
+
+            GameObject obj = Instantiate(getMoneyEffect, other.transform.position + new Vector3(0, 1, 0), other.transform.rotation);
+            Destroy(obj, 1);
+
+            gameSystem.AddScore(100);
+            other.gameObject.SetActive(false);
+        }
     }
 
     private void SyncPause() {
@@ -248,7 +273,7 @@ public class PlayerControler : SwipeReceiver
     IEnumerator CycleScore() {
         
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         try
         {
             if (!GameSystem.isPasued)
